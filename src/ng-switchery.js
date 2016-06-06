@@ -39,7 +39,11 @@ angular.module('NgSwitchery', [])
                 switcher.enable();
               }
             });
-
+			scope.$watch(function () {
+               return ngModel.$modelValue;
+            }, function(newValue,oldValue) {
+               initializeSwitch()
+            });
             function initializeSwitch() {
               $timeout(function() {
                 // Remove any old switcher
